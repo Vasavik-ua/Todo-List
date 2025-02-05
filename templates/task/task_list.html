@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>TODO list</h1>
+  <table>
+  <tr></tr>
+  <tr>
   {% if task_list %}
     {% for task in task_list %}
       <p>{{ task.content }} {{ task.progress }}</p>
@@ -11,7 +14,12 @@
       <p>{{ task.tags }} <a href="#">Update</a><a href="#">Delete</a></p>
       <br>
     {% endfor %}
+    </tr>
+    </table>
+    {% else %}
+    <p>There are no drivers in the service.</p>
   {% endif %}
+  
   
   
 {% endblock %}
