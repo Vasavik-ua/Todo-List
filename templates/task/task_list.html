@@ -12,13 +12,12 @@
             {% if task.progress %}Complete{% else %}Undo{% endif %}
           </button>
         </form>
-      <p>{{ task.content }} 
+      <p>{{ task.content }}
         {% if task.progress %}
           <span style="color: green">Done</span>
         {% else %}
           <span style="color: red">Not Done</span>
         {% endif %}
-        
       </p>
       <p>{{ task.datetime }}</p>
       {% if task.deadline_datetime %}
@@ -30,7 +29,7 @@
           {% empty %}
           No tags.
         {% endfor %}
-        
+
         <a href="{% url "task:task-update" pk=task.id %}" class="btn btn-primary link-to-page align-left">Update</a>
         <a href="{% url "task:task-delete" pk=task.id %}" class="btn btn-primary link-to-page align-left">Delete</a>
       </p>
