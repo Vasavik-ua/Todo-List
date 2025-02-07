@@ -6,7 +6,7 @@ class Task(models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
     deadline_datetime = models.DateTimeField(blank=True)
     progress = models.BooleanField(default=False)
-    tags = models.ManyToManyField("Tag", name="tags", blank=True)
+    tag = models.ManyToManyField("Tag", name="tags", blank=True)
 
 
 class Tag(models.Model):
