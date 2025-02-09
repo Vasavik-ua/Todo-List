@@ -1,19 +1,17 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, View
 
 from task.forms import TaskForm
 from task.models import Task, Tag
 
 
-def trigger_task_status(request, pk):
-    task = Task.objects.get(id=pk)
-    if task.progress:
-        task.progress = False
-    else:
-        task.progress = True
-    task.save()
-    return redirect("task:home")
+class TriggerTaskView(View):
+    def post(self, request, pk):
+        task = Task.objects.get(id=pk)
+        task.progress = not task.progress
+        task.save()
+        return redirect("task:home")
 
 
 class TaskListView(ListView):
